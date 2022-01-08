@@ -1,12 +1,11 @@
-// import { loadAndConvert } from './mod.js'
-import { loadAndConvert } from './mod.bundle.js'
+console.log(Deno.version)
+// import { loadAndConvert } from './mod.bundle.js'
 
 import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
-
 serve(main)
 
 
-
+import { loadAndConvert } from './mod.js'
 async function main(request) {
 	let url = new URL(request.url)
 	// let path = url.pathname;
