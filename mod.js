@@ -1,4 +1,5 @@
 import xlsxlib from 'https://jspm.dev/xlsx'
+// import xlsxlib from 'https://cdn.skypack.dev/xlsx'
 
 export async function loadAndConvert(url) {
 	console.log('load and convert')
