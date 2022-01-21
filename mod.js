@@ -1,10 +1,10 @@
 import xlsxlib from 'https://jspm.dev/xlsx'
 // import xlsxlib from 'https://cdn.skypack.dev/xlsx'
 
-export async function loadAndConvert(url) {
+export async function xls_url_to_tsv(url) {
 	console.log('load and convert')
 	let ab = await loadArrayBuffer(url)
-	let wb = await convertToTSV(ab)
+	let wb = await xls_ab_to_tsv(ab)
 	return wb
 }
 export async function loadArrayBuffer(url) {
@@ -16,7 +16,7 @@ export async function loadArrayBuffer(url) {
 	return arrayBuffer
 }
 
-export async function convertToTSV(arrayBuffer) {
+export async function xls_ab_to_tsv(arrayBuffer) {
 	let wb = await xlsxlib.read(arrayBuffer, { type: 'array' })
 	let output = {}
 	for (let [name, data] of Object.entries(wb.Sheets)) {

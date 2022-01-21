@@ -8,7 +8,7 @@ import { serve } from "https://deno.land/std@0.114.0/http/server.ts";
 serve(main)
 
 
-import { loadAndConvert } from './mod.js'
+import { xls_url_to_tsv } from './mod.js'
 
 async function main(request) {
 	let url = new URL(request.url)
@@ -18,7 +18,7 @@ async function main(request) {
 	console.log('sheet', params.sheet)
 	console.log('url', params.url)
 
-	let output = await loadAndConvert(params.url)
+	let output = await xls_url_to_tsv(params.url)
 	console.log(Object.keys(output ?? {}))
 	// let text = Object.entries(output).map(x=>x[0]join('\n\n\n')
 	let text = output[params.sheet]
