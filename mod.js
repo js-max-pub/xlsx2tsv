@@ -1,5 +1,5 @@
-import xlsxlib from 'https://jspm.dev/xlsx'
-// import xlsxlib from 'https://cdn.skypack.dev/xlsx'
+import * as XLSX from 'https://unpkg.com/xlsx/xlsx.mjs';
+
 
 export async function xls_url_to_tsv(url) {
 	console.log('load and convert')
@@ -17,10 +17,10 @@ export async function loadArrayBuffer(url) {
 }
 
 export async function xls_ab_to_tsv(arrayBuffer) {
-	let wb = await xlsxlib.read(arrayBuffer, { type: 'array' })
+	let wb = await XLSX.read(arrayBuffer, { type: 'array' })
 	let output = {}
 	for (let [name, data] of Object.entries(wb.Sheets)) {
-		output[name] = xlsxlib.utils.sheet_to_csv(data, { FS: '\t' })
+		output[name] = XLSX.utils.sheet_to_csv(data, { FS: '\t' })
 		// Deno.writeTextFileSync(name + '.tsv', output)
 	}
 	return output
